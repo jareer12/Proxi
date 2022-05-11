@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class="bg-bray-600">
+    <div class="flex mt-5 flex-col">
+        <div class="overflow-x-auto">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-bray-300 sm:rounded-lg">
+                    <table class="min-w-full divide-y divide-bray-300">
+                        <thead class="bg-bray-500">
+                            <tr>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                    IP Address</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                    Port</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                    Protocol</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                    Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-bray-400 divide-y divide-bray-300">
+                            <% for(var i=0; i<Data.length; i++) { if (JSON.parse(Data[i]).ip) { %>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-400">
+                                        <%= JSON.parse(Data[i]).ip %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
+                                        <%= JSON.parse(Data[i]).port %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap uppercase text-sm text-gray-400">
+                                        <%= JSON.parse(Data[i]).protocol %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap uppercase text-sm text-gray-400">
+                                        <button
+                                            onclick="navigator.clipboard.writeText(`<%= JSON.parse(Data[i]).ip %>: <%= JSON.parse(Data[i]).port %>`); alert(`Copied :)`)"
+                                            class="bg-royal text-white rounded font-bold shadow py-2 px-5">COPY</button>
+                                    </td>
+                                </tr>
+
+                                <% }%>
+                                    <% }%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

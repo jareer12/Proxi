@@ -1,10 +1,11 @@
 module.exports = async function main() {
+  const Chalk = require("../module/chalk");
   const fetch = require("node-fetch");
   const isGood = require("./checker");
   const URL = require("./url");
   const fs = require("fs");
 
-  fetch(URL({}))
+  fetch(URL())
     .then((res) => {
       return res.text();
     })
@@ -14,8 +15,7 @@ module.exports = async function main() {
         .replace(/ /gi, "")
         .split("\n")
         .map((val) => val.replace(/\r/gi, ""));
-      console.log(`${Queue.length} Proxies Added To Queue`);
-      let Done = 0;
+      Chalk.green(`${Queue.length} Proxies Added To Queue`);
       Queue.forEach((Proxy) => {
         isGood({
           ipAddress: Proxy.split(":")[0],

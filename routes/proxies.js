@@ -15,7 +15,7 @@ router.get("/", function (req, res) {
         )
         .split("\n")
         .map((val) => val.replace(/:http/gi, ""));
-      res.end(
+      return res.end(
         toShuffle == true
           ? shuffle(Data).join("\n").replace("\n\n", "\n")
           : Data.join("\n").replace("\n\n", "\n")
@@ -36,7 +36,10 @@ router.get("/", function (req, res) {
         );
       Data = Data.map((val) => JSON.parse(val));
     }
-    res.json({ Success: true, Data: toShuffle == true ? shuffle(Data) : Data });
+    return res.json({
+      Success: true,
+      Data: toShuffle == true ? shuffle(Data) : Data,
+    });
   }
 });
 
