@@ -1,7 +1,8 @@
 tailwind.config.js
-./Data/*.txt
-test/*
+Data/*.txt
+test/*.*
 test
+
 
 # Logs
 logs
