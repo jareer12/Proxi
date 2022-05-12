@@ -20,6 +20,7 @@ router.get("/", function (req, res) {
     );
   res.render(`${__dirname.replace("routes", "")}/public/home.ejs`, {
     Data: Data,
+    Host: req.headers.host + req.originalUrl,
   });
 });
 

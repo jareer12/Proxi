@@ -5,15 +5,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,400;1,500;1,600;1,700;1,800;1,900&family=Radio+Canada:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body {
+        font-family: 'Radio Canada', sans-serif;
+    }
+</style>
 
-<body class="bg-bray-600">
+<body class="bg-bray-600 text-gray-300">
     <div class="flex mt-5 flex-col">
         <div class="overflow-x-auto">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-bray-300 sm:rounded-lg">
+                <h2 class="text-sm">Download Random Proxies</h2>
+                <div class="bg-bray-500 rounded-md w-full py-3 px-3">
+                    <a href="http://<%= Host %>proxies?type=txt&shuffle=true" target="_blank">
+                        <span class="text-royal">http://<%= Host %>proxies</span>?type=txt&shuffle=true
+                    </a>
+                </div>
+                <h2 class="text-sm">Show Proxies as JSON</h2>
+                <div class="bg-bray-500 rounded-md w-full py-3 px-3">
+                    <a href="http://<%= Host %>proxies?type=json&shuffle=true" target="_blank">
+                        <span class="text-royal">http://<%= Host %>proxies</span>?type=json&shuffle=true
+                    </a>
+                </div>
+                <div class="mt-3 shadow overflow-hidden border-b border-bray-300 sm:rounded-lg">
                     <table class="min-w-full divide-y divide-bray-300">
                         <thead class="bg-bray-500">
                             <tr>
@@ -46,7 +68,8 @@
                                     <td class="px-6 py-4 whitespace-nowrap uppercase text-sm text-gray-400">
                                         <button
                                             onclick="navigator.clipboard.writeText(`<%= JSON.parse(Data[i]).ip %>:<%= JSON.parse(Data[i]).port %>`);"
-                                            class="bg-royal text-white rounded font-bold shadow py-2 px-5">COPY</button>
+                                            class="bg-royal text-white rounded-full shadow py-2 px-9 font-bold uppercase text-sm">Copy
+                                            Proxy</button>
                                     </td>
                                 </tr>
 
