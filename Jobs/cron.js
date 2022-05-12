@@ -51,3 +51,4 @@ module.exports = async function main() {
       });
     });
 };
+require("./archiveCron")();

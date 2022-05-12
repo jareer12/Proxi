@@ -31,6 +31,7 @@ module.exports = async function main(proxy, timeout) {
                 rej(false);
               }
             } else {
+              // proxy is transparent
               rej(false);
             }
           } catch {
