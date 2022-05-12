@@ -21,3 +21,7 @@ setTimeout(() => {
   Chalk.blue(`Restarting Checker...`);
   require("./Jobs/cron")();
 }, parseInt(process.env.RUN_CRON_INTERVAL_MS) || 5 * 60 * 1000);
+setTimeout(() => {
+  Chalk.blue(`Clearing all proxy data...`);
+  require("./Jobs/reset")();
+}, parseInt(process.env.RESET_INTERVAL_MS) || 5 * 60 * 1000);

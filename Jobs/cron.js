@@ -24,7 +24,10 @@ module.exports = async function main() {
         })
           .then((data) => {
             fs.readFile(
-              `${__dirname.replace("Jobs", "")}/Data/working.txt`,
+              `${__dirname.replace(
+                path.basename(__dirname),
+                ""
+              )}/Data/working.txt`,
               "utf-8",
               function (err, data) {
                 if (err) {
@@ -35,7 +38,10 @@ module.exports = async function main() {
                     }:${Protocol}`;
                     if (!data.includes(Line)) {
                       fs.writeFile(
-                        `${__dirname.replace("Jobs", "")}/Data/working.txt`,
+                        `${__dirname.replace(
+                          path.basename(__dirname),
+                          ""
+                        )}/Data/working.txt`,
                         `${data}\n${Line}`,
                         function (err, data) {}
                       );
