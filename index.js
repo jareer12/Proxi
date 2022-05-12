@@ -16,4 +16,4 @@ App.listen(process.env.PORT || 3344);
 require("./Jobs/cron")();
 setTimeout(() => {
   require("./Jobs/cron")();
-}, process.env.RUN_CRON_INTERVAL_MS || 5 * 60 * 1000);
+}, parseInt(process.env.RUN_CRON_INTERVAL_MS) || 5 * 60 * 1000);

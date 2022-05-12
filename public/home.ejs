@@ -45,7 +45,7 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap uppercase text-sm text-gray-400">
                                         <button
-                                            onclick="navigator.clipboard.writeText(`<%= JSON.parse(Data[i]).ip %>: <%= JSON.parse(Data[i]).port %>`); alert(`Copied :)`)"
+                                            onclick="navigator.clipboard.writeText(`<%= JSON.parse(Data[i]).ip %>:<%= JSON.parse(Data[i]).port %>`);"
                                             class="bg-royal text-white rounded font-bold shadow py-2 px-5">COPY</button>
                                     </td>
                                 </tr>
