@@ -40,6 +40,11 @@ router.get("/", function (req, res) {
       Success: true,
       Data: toShuffle == true ? shuffle(Data) : Data,
     });
+  } else {
+    res.json({
+      Success: false,
+      Message: "API Access is disabled for this server",
+    });
   }
 });
 

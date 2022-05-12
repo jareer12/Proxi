@@ -15,3 +15,15 @@ npm install
 ## Create File
 touch ./Data/working.txt
 ```
+
+Create a `.env` files and configure it to your liking. Here is an example.
+
+```env
+## Settings
+API_ACCESS=true
+
+## Intervals & Cron Timers
+RESET_INTERVAL_MS=300000
+RUN_CRON_INTERVAL_MS=300000
+DEFAULT_CHECKER_TIMEOUT_MS=3000
+```
