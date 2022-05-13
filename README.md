@@ -22,6 +22,9 @@ Create a `.env` files and configure it to your liking. Here is an example.
 ## Settings
 API_ACCESS=true
 
+## Misc
+STORAGE_FILE=working.txt
+
 ## Intervals & Cron Timers
 RESET_INTERVAL_MS=600000
 RUN_CRON_INTERVAL_MS=60000
