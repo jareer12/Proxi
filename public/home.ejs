@@ -17,7 +17,23 @@
     body {
         font-family: 'Radio Canada', sans-serif;
     }
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #D44A4A;
+    }
 </style>
+
 
 <body class="bg-bray-600 text-gray-300">
     <div class="flex mt-5 flex-col py-5">
@@ -26,13 +42,13 @@
                 <h2 class="text-sm">Download Random Proxies</h2>
                 <div class="bg-bray-500 rounded-md w-full py-3 px-3">
                     <a href="http://<%= Host %>proxies?type=txt&shuffle=true" target="_blank">
-                        <span class="text-royal">http://<%= Host %>proxies</span>?type=txt&shuffle=true
+                        <span class="text-valencia">http://<%= Host %>proxies</span>?type=txt&shuffle=true
                     </a>
                 </div>
                 <h2 class="text-sm">Show Proxies as JSON</h2>
                 <div class="bg-bray-500 rounded-md w-full py-3 px-3">
                     <a href="http://<%= Host %>proxies?type=json&shuffle=true" target="_blank">
-                        <span class="text-royal">http://<%= Host %>proxies</span>?type=json&shuffle=true
+                        <span class="text-valencia">http://<%= Host %>proxies</span>?type=json&shuffle=true
                     </a>
                 </div>
                 <div class="mt-3 shadow overflow-hidden border-b border-bray-300 sm:rounded-lg">
@@ -68,13 +84,12 @@
                                     <td class="px-6 py-4 whitespace-nowrap uppercase text-sm text-gray-400">
                                         <button
                                             onclick="navigator.clipboard.writeText(`<%= JSON.parse(Data[i]).ip %>:<%= JSON.parse(Data[i]).port %>`);"
-                                            class="bg-royal text-white rounded-full shadow py-2 px-9 font-bold uppercase text-sm">Copy
+                                            class="bg-valencia focus:outline-none text-white rounded-md shadow py-2 px-7 font-bold uppercase text-sm">Copy
                                             Proxy</button>
                                     </td>
                                 </tr>
 
-                                <% }%>
-                                    <% }%>
+                                <% } }%>
                         </tbody>
                     </table>
                 </div>

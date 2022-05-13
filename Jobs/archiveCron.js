@@ -1,5 +1,6 @@
-const isGood = require("./checker");
+const arrayLimit = require("../module/arrayLimit");
 const Chalk = require("../module/chalk");
+const isGood = require("./checker");
 const path = require("path");
 const fs = require("fs");
 
@@ -18,8 +19,11 @@ module.exports = async function main() {
         `${__dirname.replace(path.basename(__dirname), "")}/archive/${file}`,
         "utf-8"
       );
-      let Queue = Data.split("\n");
-      Queue = Queue.map((val) => val.replace("\r", ""));
+      Queue = Data.split("\n");
+      Queue = arrayLimit(
+        Queue.map((val) => val.replace("\r", "")),
+        parseInt(process.env.MAX_LIMIT_PER_ARCHIVE_CHECK) || 250
+      );
       Chalk.green(`${Queue.length} Proxies Added To Queue`);
       Queue.forEach((Proxy) => {
         isGood({
