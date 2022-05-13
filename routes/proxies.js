@@ -14,7 +14,7 @@ router.get("/", function (req, res) {
           "utf-8"
         )
         .split("\n")
-        .map((val) => val.replace(/:http/gi, ""));
+        .map((val) => `${val.split(":")[0]}:${val.split(":")[1]}`);
       return res.end(
         toShuffle == true
           ? shuffle(Data).join("\n").replace("\n\n", "\n")

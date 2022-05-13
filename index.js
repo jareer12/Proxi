@@ -16,13 +16,13 @@ App.set("view engine", "html");
 App.engine("html", require("ejs").renderFile);
 App.set("views", path.join(__dirname, "views"));
 
-setInterval(() => {
-  Cron();
-  Chalk.blue(`Restarted Checker`);
-}, parseInt(process.env.RUN_CRON_INTERVAL_MS) || 5 * 60 * 1000);
+Cron();
+setInterval(() => {},
+parseInt(process.env.RUN_CRON_INTERVAL_MS) || 5 * 60 * 1000);
 setInterval(() => {
   Reset();
-  Chalk.red(`Cleared Proxy Database`);
 }, parseInt(process.env.RESET_INTERVAL_MS) || 5 * 60 * 1000);
 
-App.listen(process.env.PORT || 3344);
+App.listen(process.env.PORT || 3344, function () {
+  Chalk.green(`Proxi Server Has Started`);
+});

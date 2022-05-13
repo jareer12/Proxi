@@ -1,12 +1,12 @@
-module.exports = async function main() {
-  const Chalk = require("../module/chalk");
-  const Archiver = require("./archiveCron");
-  const isGood = require("./checker");
-  const fetch = require("node-fetch");
-  const path = require("path");
-  const URL = require("./url");
-  const fs = require("fs");
+const Chalk = require("../module/chalk");
+const Archiver = require("./archiveCron");
+const isGood = require("./checker");
+const fetch = require("node-fetch");
+const path = require("path");
+const URL = require("./url");
+const fs = require("fs");
 
+module.exports = async function main() {
   Archiver();
   let DatabaseFile = `${__dirname.replace(path.basename(__dirname), "")}/Data/${
     process.env.STORAGE_FILE || "working.txt"
@@ -19,7 +19,7 @@ module.exports = async function main() {
       return res.text();
     })
     .then((data) => {
-      const Protocol = "http";
+      let Protocol = "http/https";
       Queue = data
         .replace(/ /gi, "")
         .split("\n")
@@ -31,25 +31,24 @@ module.exports = async function main() {
           port: Proxy.split(":")[1],
           protocol: Protocol,
         })
-          .then((data) => {
+          .then((proxyData) => {
             fs.readFile(DatabaseFile, "utf-8", function (err, data) {
               if (err) {
               } else {
                 try {
-                  let Line = `${Proxy.split(":")[0]}:${
-                    Proxy.split(":")[1]
-                  }:${Protocol}`;
+                  let Line = `${proxyData.ipAddress}:${proxyData.port}:${Protocol}`;
                   if (!data.includes(Line)) {
-                    fs.writeFile(
+                    fs.writeFileSync(
                       `${__dirname.replace(
                         path.basename(__dirname),
                         ""
                       )}/Data/working.txt`,
-                      `${data}\n${Line}`,
-                      function (err, data) {}
+                      `${data}\n${Line}`
                     );
                   }
-                } catch (err) {}
+                } catch (err) {
+                  Chalk.red(err);
+                }
               }
             });
           })
